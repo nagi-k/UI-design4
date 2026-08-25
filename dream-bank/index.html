@@ -623,10 +623,13 @@ $('#phone').addEventListener('pointerleave', ()=>{ ptr.x=ptr.y=-999; });
   const enter = ()=>{ if($('#splash').classList.contains('leaving'))return;
     $('#splash').classList.add('leaving'); $('#app').classList.remove('hide');
     sizeCanvas(); initParticles(); requestAnimationFrame(drawParticles);
-    go('home'); setTimeout(()=>$('#splash').remove(), 950);
+    /* 支持 URL hash 深链（作品集嵌入时可直达指定页面，如 index.html#analyze） */
+    const h = (location.hash||'').slice(1);
+    go(TABS.includes(h) || h==='train' ? h : 'home');
+    setTimeout(()=>$('#splash').remove(), 950);
   };
   $('#enterBtn').onclick = enter;
-  setTimeout(enter, 3200); /* 3 秒后自动进入 */
+  setTimeout(enter, location.hash ? 500 : 3200); /* 深链模式快速进入，否则 3 秒后自动进入 */
 })();
 
 /* 全局盲盒入口 */
