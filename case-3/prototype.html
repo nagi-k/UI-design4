@@ -473,7 +473,7 @@ const DB = {
 
 /* ---------- 全局状态（localStorage 持久化碎片/ streak） ---------- */
 const S = {
-  page:'home', prevPage:null,
+  page:null, prevPage:null,
   fragments: +(localStorage.getItem('db_frag') ?? 328),
   streak: +(localStorage.getItem('db_streak') ?? 12),
   likes:{}, weatherIdx:0, playingAudio:null, recordData:null,
