@@ -16,6 +16,12 @@
 /* ============================================================
    梦屿 Dream Bank · 设计令牌与全局动效
    ============================================================ */
+@font-face{
+  font-family:'NotoColorEmoji';
+  src:url('./fonts/NotoColorEmoji-Regular.ttf') format('truetype');
+  font-weight:normal; font-style:normal; font-display:swap;
+}
+
 :root{
   --bg:#0B1026; --bg2:#1E1B4B;
   --aurora:#8B5CF6; --nebula:#EC4899; --cyan:#06B6D4; --moon:#F8FAFC; --gold:#FBBF24;
@@ -28,11 +34,11 @@
 html,body{ height:100%; }
 body{
   margin:0; background:#05070f; color:var(--ink);
-  font-family:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",-apple-system,sans-serif;
+  font-family:'NotoColorEmoji',"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",-apple-system,sans-serif;
   display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
-.font-display{ font-family:'Unbounded','Montserrat','Arial Black','PingFang SC',sans-serif; }
-.font-poem{ font-family:'Noto Serif SC','Source Han Serif SC','STSong','SimSun',serif; }
+.font-display{ font-family:'NotoColorEmoji','Unbounded','Montserrat','Arial Black','PingFang SC',sans-serif; }
+.font-poem{ font-family:'NotoColorEmoji','Noto Serif SC','Source Han Serif SC','STSong','SimSun',serif; }
 
 /* ---------- 手机外框（桌面端居中，移动端铺满） ---------- */
 .phone{

@@ -9,15 +9,22 @@ ai-canvas-package/
 ├── README.md                 # 本说明书
 ├── page-descriptions.md      # 每个页面的结构、内容与交互说明
 ├── design-tokens.md          # 色彩、字体、间距、圆角、阴影等设计系统
-├── screenshot-notes.md       # 截图生成环境与已知问题说明
+├── screenshot-notes.md       # 截图生成环境说明
 ├── import-prompt.txt         # 可直接复制给 AI 画布的 Prompt
-└── screenshots/              # 6 张核心页面高保真截图
-    ├── 01-home.png           # 首页 · 梦境银行
-    ├── 02-record.png         # 记录 · 捕梦网
-    ├── 03-analyze.png        # 分析 · 潜意识的形状
-    ├── 04-community.png      # 社区 · 梦屿广场
-    ├── 05-profile.png        # 我的 · 个人中心 / 图鉴
-    └── 06-train.png          # 训练 · 清醒梦实验室
+└── screenshots/              # 截图资源
+    ├── 01-home.png           # 首页 · 首屏截图
+    ├── 02-record.png         # 记录页 · 首屏截图
+    ├── 03-analyze.png        # 分析页 · 首屏截图
+    ├── 04-community.png      # 社区页 · 首屏截图
+    ├── 05-profile.png        # 我的页 · 首屏截图
+    ├── 06-train.png          # 训练页 · 首屏截图
+    └── long/                 # 长截图（完整滚动内容）
+        ├── 01-home-long.png
+        ├── 02-record-long.png
+        ├── 03-analyze-long.png
+        ├── 04-community-long.png
+        ├── 05-profile-long.png
+        └── 06-train-long.png
 ```
 
 ## 这套素材能做什么
@@ -32,7 +39,8 @@ ai-canvas-package/
 
 | 素材 | 是否必须 | 本包是否提供 | 说明 |
 |------|---------|------------|------|
-| 每个核心界面的高保真截图 | 必须 | ✅ screenshots/ | 6 张 PNG，375×812 比例 |
+| 每个核心界面的首屏高保真截图 | 必须 | ✅ screenshots/ | 6 张 PNG，375×812 比例 |
+| 每个核心界面的完整长截图 | 强烈建议 | ✅ screenshots/long/ | 6 张 PNG，完整滚动内容 |
 | 页面名称与功能说明 | 强烈建议 | ✅ page-descriptions.md | 帮助 AI 理解每个页面 |
 | 设计系统（颜色/字体/间距） | 强烈建议 | ✅ design-tokens.md | 保证多页面风格一致 |
 | 组件规范（按钮/卡片/标签） | 建议 | ✅ design-tokens.md | 减少 AI 自由发挥 |
@@ -45,7 +53,7 @@ ai-canvas-package/
 打开 `import-prompt.txt`，复制全部内容。把它作为你给 AI 画布的第一条指令。
 
 ### 步骤 2：上传截图
-把 `screenshots/` 里的 6 张图片一次性上传到 AI 画布。
+把 `screenshots/` 里的 6 张首屏截图 + `screenshots/long/` 里的 6 张长截图一次性上传到 AI 画布。
 
 ### 步骤 3：补充设计系统
 把 `design-tokens.md` 的核心内容（尤其是色板和字体）复制到对话中，或在 AI 生成第一版后，用来校正颜色。
@@ -60,29 +68,20 @@ ai-canvas-package/
 - 训练页是否有「意图卡 + 清醒率 + 挑战 + 徽章」？
 
 ### 步骤 5：下载到 Figma
-AI 画布生成完成后，导出/下载为 Figma 可编辑格式，替换 emoji 图标、调整细节。
+AI 画布生成完成后，导出/下载为 Figma 可编辑格式，按需调整文案、间距和细节。
 
-## 已知问题与处理建议
+## 截图说明
 
-1. **截图中的 emoji 显示为方框**：
-   - 原因：截图环境的系统字体缺少彩色 emoji。
-   - 不影响 AI 识别布局，AI 能从上下文知道这里是「🏠 首页」「🎙️ 记录」等图标。
-   - 在 Figma 中替换为对应 emoji 或图标即可。
-
-2. **部分页面内容需要滚动才能看全**：
-   - 截图只截取了首屏。AI 画布生成后，你可能需要手动补全列表项、展开设置项等。
-   - 参考 `page-descriptions.md` 中的「完整内容」段落。
-
+1. **首屏截图**：`screenshots/` 根目录下的 6 张图，适合作为 AI 画布快速预览和布局参考。
+2. **长截图**：`screenshots/long/` 目录下的 6 张图，完整展示了每个页面的全部滚动内容，包括完整列表、设置项等。建议一并上传给 AI 画布，让它看到更完整的信息架构。
 3. **动态效果无法截图**：
    - 长按捕梦网的涟漪、拆盲盒动画、卡片翻转等是动态交互，截图中无法体现。
    - 已在 `page-descriptions.md` 中用文字描述。
 
 ## 如果你需要更高质量的截图
 
-当前截图是在无头浏览器中自动截取的。如果你在自己的电脑（Mac/Windows）上打开 `case-3/capture.html` 或 `case-3/prototype.html`，系统自带 emoji 字体，截图效果会更好。
-
-推荐手动截图流程：
-1. 用 Chrome DevTools 打开 `capture.html`。
+当前截图已经使用了本地嵌入的 Noto Color Emoji 字体，emoji 能正常显示。如果你希望在自己电脑上重新截图（例如更换设备尺寸、调整文案），可以：
+1. 用 Chrome DevTools 打开 `case-3/capture.html`。
 2. 按 `Cmd/Ctrl + Shift + M` 切换到设备模拟（iPhone 14 Pro / 375×812）。
 3. 依次点击底部 Tab，截取每个页面。
 4. 把截图覆盖 `ai-canvas-package/screenshots/` 中的文件。
