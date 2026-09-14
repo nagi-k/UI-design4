@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梦屿 Dream Bank · 截图容器</title>
+<style>
+*{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ height:100%; }
+body{
+  display:flex; align-items:center; justify-content:center;
+  background:#070a1a;
+  overflow:hidden;
+}
+iframe{
+  height:95vh;
+  width:calc(95vh * 375 / 812);
+  max-width:95vw;
+  border:none;
+  border-radius:40px;
+  background:#0B1026;
+  box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(139,92,246,.12);
+}
+</style>
+</head>
+<body>
+<iframe src="./prototype.html" id="captureFrame" title="梦屿 Dream Bank 原型" allow="clipboard-read; clipboard-write"></iframe>
+<script>
+const frame = document.getElementById('captureFrame');
+frame.onload = () => {
+  try {
+    const doc = frame.contentDocument;
+    const link = doc.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap';
+    doc.head.appendChild(link);
+  } catch(e) {}
+};
+</script>
+</body>
+</html>
